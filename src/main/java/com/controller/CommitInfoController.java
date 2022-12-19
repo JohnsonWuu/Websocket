@@ -29,8 +29,7 @@ public class CommitInfoController {
         result.put("Commit branch", branch);
         result.put("Commit id", commitId);
         result.put("Commit tag version", tagVersion);
-
-
+        
         System.out.println("result: " + result);
         return result;
     }
