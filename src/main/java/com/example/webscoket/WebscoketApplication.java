@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import zipkin2.server.internal.EnableZipkinServer;
 
@@ -27,6 +29,15 @@ public class WebscoketApplication {
         System.out.println("Enter Main function...");
     }
 
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer placeholderConfigurer() {
+        PropertySourcesPlaceholderConfigurer propsConfig
+                = new PropertySourcesPlaceholderConfigurer();
+        propsConfig.setLocation(new ClassPathResource("git.properties"));
+        propsConfig.setIgnoreResourceNotFound(true);
+        propsConfig.setIgnoreUnresolvablePlaceholders(true);
+        return propsConfig;
+    }
 
     @PostConstruct
     public void postConstruct(){
