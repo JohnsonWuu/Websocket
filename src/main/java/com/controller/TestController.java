@@ -50,7 +50,7 @@ public class TestController {
                              @RequestParam(value="param2", required=false) String param2)
     {
 
-        System.out.println();
+        System.out.println("Add log");
 
         return  "test";
     }
